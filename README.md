@@ -1,4 +1,4 @@
-# Portefaix Elasticsearch
+# Portefaix Packetbeat
 
 ![logo](http://pkgs.alpinelinux.org/assets/alpinelinux-logo.svg)
 
