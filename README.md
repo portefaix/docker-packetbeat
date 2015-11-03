@@ -1,5 +1,12 @@
 # Portefaix Packetbeat
 
+* Master :
+[![Circle CI](https://circleci.com/gh/portefaix/docker-packetbeat/tree/master.svg?style=svg)](https://circleci.com/gh/portefaix/docker-packetbeat/tree/master)
+
+* Develop :
+[![Circle CI](https://circleci.com/gh/portefaix/docker-packetbeat/tree/develop.svg?style=svg)](https://circleci.com/gh/portefaix/docker-packetbeat/tree/develop)
+
+
 ![logo](http://pkgs.alpinelinux.org/assets/alpinelinux-logo.svg)
 
 [Alpine Linux][] is a Linux distribution built around musl libc and BusyBox.
@@ -13,16 +20,16 @@ This image is based on the official Alpine Linux.
 
 ## Supported tags
 
-- `1.0`
+- `1.0.0` [![](https://badge.imagelayers.io/portefaix/packetbeat:2.0.2.svg)](https://imagelayers.io/?images=portefaix/packetbeat:1.0.0 'imagelayers.io')
 
 ## License
 
-See [LICENSE][] for the complete license.
+See [LICENSE](LICENSE) for the complete license.
 
 
 ## Changelog
 
-A [ChangeLog.md][] is available.
+A [ChangeLog.md](ChangeLog.md) is available.
 
 
 ## Contact
