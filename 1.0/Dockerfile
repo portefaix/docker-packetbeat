@@ -1,21 +1,26 @@
-# VERSION 1.0
+# VERSION 1.0.0
 # AUTHOR:         Nicolas Lamirault <nicolas.lamirault@gmail.com>
 # DESCRIPTION:    portefaix/packetbeat
 
 FROM portefaix/base:3.2
 MAINTAINER Nicolas Lamirault <nicolas.lamirault@gmail.com>
 
-ENV PACKETBEAT_VERSION=1.0.0-beta2 \
-    PACKETBEAT_ARCH=x86_64
+ENV PACKETBEAT_VERSION=1.0.0
+ENV GOPATH /go
 
-RUN apk add --update wget curl ca-certificates libpcap && \
-# RUN apk add git mercurial bzr go
-# RUN apk del wget ca-certificates && \
-    rm /var/cache/apk/*
+RUN apk add --update build-base go git mercurial bzr linux-grsec-dev libpcap libpcap-dev
 
-# Install Packetbeat
-RUN curl -Ls https://download.elastic.co/beats/packetbeat/packetbeat-$PACKETBEAT_VERSION-$PACKETBEAT_ARCH.tar.gz | tar -xz -C /usr/share && \
-    mv /usr/share/packetbeat-$PACKETBEAT_VERSION /usr/share/packetbeat
-ADD ./packetbeat.yml /usr/share/packetbeat/packetbeat.yml
+RUN mkdir -p /go/src/github.com/elastic && \
+    cd /go/src/github.com/elastic && \
+    git clone https://github.com/elastic/beats.git -b ${PACKETBEAT_VERSION}
+    # cd beats/packetbeat && \
+    # make && \
+    # mkdir -p /usr/share/packetbeat/bin/ && \
+    # cp -r -a /go/src/github.com/packetbeat/* /usr/share/packetbeat && \
+    # go clean -i -r && \
+    # apk del --purge build-base go git mercurial && \
+    # rm -rf /go /tmp/* /var/cache/apk/* /root/.n*
 
-CMD ["/usr/share/packetbeat/packetbeat", "-e", "-c=/usr/share/packetbeat/packetbeat.yml"]
+# ADD ./packetbeat.yml /usr/share/packetbeat/packetbeat.yml
+
+# CMD ["/usr/share/packetbeat/packetbeat", "-e", "-c=/usr/share/packetbeat/packetbeat.yml"]

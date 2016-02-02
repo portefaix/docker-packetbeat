@@ -36,8 +36,13 @@ help:
 
 .PHONY: build
 build:
-	@echo -e "$(ok_color)[$(app)] build $(NAMESPACE)/$(IMAGE):$(VERSION)$(no_color)"
+	@echo -e "$(OK_COLOR)[$(APP)] build $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
 	@$(DOCKER) build -t $(NAMESPACE)/$(IMAGE):${VERSION} $(version)
+
+.PHONY: run
+run:
+	@echo -e "$(OK_COLOR)[$(APP)] build $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
+	@$(DOCKER) run --rm=true -t $(NAMESPACE)/$(IMAGE):${VERSION} /usr/share/packetbeat/packetbeat
 
 .PHONY: login
 login:
@@ -47,4 +52,3 @@ login:
 publish:
 	@echo -e "$(OK_COLOR)[$(APP)] Publish $(NAMESPACE)/$(IMAGE):$(VERSION)$(NO_COLOR)"
 	@$(DOCKER) push $(NAMESPACE)/$(IMAGE):$(VERSION)
-
